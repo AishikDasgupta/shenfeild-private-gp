@@ -1,0 +1,301 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Check, Clock, UserCheck, Stethoscope, Calendar, Users } from "lucide-react";
+import heroImage from "@/assets/hero-consultation.jpg";
+import receptionImage from "@/assets/clinic-reception.jpg";
+import screeningImage from "@/assets/health-screening.jpg";
+import doctorImage from "@/assets/doctor-portrait-1.jpg";
+import clinicExterior from "@/assets/clinic-exterior.jpg";
+
+const Home = () => {
+  const benefits = [
+    { icon: Clock, title: "No waiting times" },
+    { icon: Calendar, title: "Same day appointments" },
+    { icon: Stethoscope, title: "Dedicated GP & concierge team" },
+    { icon: Users, title: "Members-only pharmacy" },
+  ];
+
+  const steps = [
+    {
+      number: "1",
+      title: "Free Consultation",
+      description: "Speak directly with our member experience team to understand how myGP Clinic can support your ongoing health needs.",
+      image: receptionImage,
+    },
+    {
+      number: "2",
+      title: "Member Onboarding",
+      description: "Our member experience team makes the onboarding process simple and convenient. You'll receive enrollment forms via email.",
+      image: receptionImage,
+    },
+    {
+      number: "3",
+      title: "Health Screening",
+      description: "Meet with our healthcare team for a detailed physical assessment analyzing over 150 key health indicators.",
+      image: screeningImage,
+    },
+    {
+      number: "4",
+      title: "Results and Health Plan",
+      description: "Review your screening results with your dedicated GP and create a personalized health plan for optimal wellbeing.",
+      image: heroImage,
+    },
+  ];
+
+  const services = [
+    {
+      title: "Unlimited GP Appointments",
+      description: "See your Private GP as many times as you need, whether in person, on video, or by phone, six days a week.",
+    },
+    {
+      title: "Longer GP Appointments",
+      description: "Our 30-minute appointments give you plenty of time to talk about different health issues.",
+    },
+    {
+      title: "Same Day Appointments",
+      description: "If you're feeling unwell, you can call and see your Private GP on the same day—no waiting for days, just hours.",
+    },
+    {
+      title: "Annual Health Screening",
+      description: "We check over 150 key health indicators every year to spot any problems early.",
+    },
+    {
+      title: "Member Concierge",
+      description: "Your concierge team are on hand to help. We answer right away and make sure you get the care or answers you need fast.",
+    },
+    {
+      title: "Children Included For Free",
+      description: "Your membership covers your children under 18 at no extra cost, making sure your whole family gets the care they need.",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-[600px] flex items-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${heroImage})`,
+          }}
+        />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl text-white">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              A Private GP Clinic, designed around you
+            </h1>
+            <div className="space-y-3 mb-8">
+              {benefits.map((benefit, index) => {
+                const Icon = benefit.icon;
+                return (
+                  <div key={index} className="flex items-center gap-3">
+                    <Check className="h-5 w-5 text-primary" />
+                    <span className="text-lg">{benefit.title}</span>
+                  </div>
+                );
+              })}
+            </div>
+            <Button size="lg" asChild className="bg-primary hover:bg-[hsl(var(--primary-hover))]">
+              <Link to="/contact">Register For a Free Consultation</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* As Seen In */}
+      <section className="bg-secondary py-8">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-sm text-muted-foreground mb-4">AS SEEN IN</p>
+          <div className="flex justify-center items-center gap-8 flex-wrap opacity-60">
+            <span className="text-lg font-semibold">Women's Health</span>
+            <span className="text-lg font-semibold">The Times</span>
+            <span className="text-lg font-semibold">The Independent</span>
+            <span className="text-lg font-semibold">Men's Health</span>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">How Our Private GP Membership Works</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Shaping a better future for you through accessible, proactive and personalised healthcare.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((step, index) => (
+              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="aspect-video bg-muted relative">
+                  <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
+                  <div className="absolute top-4 left-4 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">
+                    {step.number}
+                  </div>
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-lg mb-2">{step.title}</h3>
+                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <Button asChild variant="outline" size="lg">
+              <Link to="/membership">Learn More About Membership</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Healthcare Services */}
+      <section className="bg-accent py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-primary font-semibold mb-2">Faster and easier healthcare</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">The Private Healthcare Service You Deserve</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div key={index} className="bg-card p-6 rounded-lg">
+                <h3 className="font-semibold text-lg mb-3">{service.title}</h3>
+                <p className="text-muted-foreground">{service.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button asChild size="lg" className="bg-primary hover:bg-[hsl(var(--primary-hover))]">
+              <Link to="/treatments">View All Treatments</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet the Team Preview */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-primary font-semibold mb-2">Introducing Our Team</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Your Expert Private GP's</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {[1, 2, 3].map((_, index) => (
+              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="aspect-[3/4] bg-muted">
+                  <img src={doctorImage} alt="Doctor" className="w-full h-full object-cover" />
+                </div>
+                <CardContent className="p-6 text-center">
+                  <h3 className="font-semibold text-lg mb-2">Dr. Sarah Johnson</h3>
+                  <p className="text-sm text-primary mb-2">HRT • Women's Health</p>
+                  <p className="text-sm text-muted-foreground">
+                    Highly experienced Private GP with expertise in women's health and hormone replacement therapy.
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <Button asChild variant="outline" size="lg">
+              <Link to="/team">Meet All Our Doctors</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Locations Preview */}
+      <section className="bg-secondary py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Locations Across Greater Manchester & Cheshire</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="overflow-hidden">
+              <div className="aspect-video bg-muted">
+                <img src={clinicExterior} alt="Clinic" className="w-full h-full object-cover" />
+              </div>
+              <CardContent className="p-6">
+                <div className="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                  Accepting new members
+                </div>
+                <h3 className="font-semibold mb-2">Wilmslow - South Manchester</h3>
+                <p className="text-sm text-muted-foreground">
+                  Brooke Court, Lower Meadow Road Handforth, Wilmslow SK9 3ND, United Kingdom
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden">
+              <div className="aspect-video bg-muted">
+                <img src={clinicExterior} alt="Clinic" className="w-full h-full object-cover" />
+              </div>
+              <CardContent className="p-6">
+                <div className="inline-block bg-accent text-accent-foreground text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                  Limited places available
+                </div>
+                <h3 className="font-semibold mb-2">Cheshire Clinic</h3>
+                <p className="text-sm text-muted-foreground">
+                  Northwich Rd, Lower Stretton, Warrington, WA4 4PG, United Kingdom
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden">
+              <div className="aspect-video bg-muted">
+                <img src={clinicExterior} alt="Clinic" className="w-full h-full object-cover" />
+              </div>
+              <CardContent className="p-6">
+                <div className="inline-block bg-muted text-muted-foreground text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                  Coming September 2025
+                </div>
+                <h3 className="font-semibold mb-2">Antrobus Clinic</h3>
+                <p className="text-sm text-muted-foreground">
+                  Thellow Heath Park, Northwich Rd, Antrobus, Northwich CW9 6JB, United Kingdom
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mt-8">
+            <Button asChild size="lg" className="bg-primary hover:bg-[hsl(var(--primary-hover))]">
+              <Link to="/locations">View All Locations</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <Card className="bg-primary text-white overflow-hidden">
+            <CardContent className="p-12 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Start Your Private Healthcare Journey Today
+              </h2>
+              <p className="text-lg mb-8 opacity-90">
+                Book your free consultation and discover how our personalised care can transform your health.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" variant="secondary" asChild>
+                  <Link to="/contact">Register Now</Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white/10">
+                  <a href="tel:+441925917578">Call Us Today</a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
