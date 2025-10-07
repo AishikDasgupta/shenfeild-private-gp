@@ -40,28 +40,28 @@ const Navigation = () => {
   return (
     <>
       {/* Announcement Bar */}
-      <div className="bg-[hsl(var(--announcement-bg))] text-[hsl(var(--announcement-text))] text-center py-2 px-4 text-sm">
+      <div className="bg-[hsl(var(--announcement-bg))] text-[hsl(var(--announcement-text))] text-center py-3 px-4 text-sm font-medium animate-fade-in">
         <p>Now Accepting Patients - Start Your Registration</p>
       </div>
 
       {/* Top Contact Bar */}
       <div className="bg-background border-b border-border">
         <div className="container mx-auto px-4 py-2 flex justify-end items-center text-sm">
-          <a href="mailto:hello@mygpclinic.co.uk" className="text-muted-foreground hover:text-foreground transition-colors">
+          <a href="mailto:hello@mygpclinic.co.uk" className="text-muted-foreground hover:text-primary transition-colors duration-300">
             hello@mygpclinic.co.uk
           </a>
         </div>
       </div>
 
       {/* Main Navigation */}
-      <nav className="bg-card border-b border-border sticky top-0 z-50 shadow-sm">
+      <nav className="bg-card border-b border-border sticky top-0 z-50 shadow-md backdrop-blur-sm bg-card/95">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center">
-              <div className="text-2xl font-bold text-foreground">
+            <Link to="/" className="flex items-center group">
+              <div className="text-2xl font-bold text-foreground transition-transform duration-300 group-hover:scale-105">
                 my<span className="text-primary">GP</span>
-                <div className="text-xs tracking-wider">CLINIC</div>
+                <div className="text-xs tracking-wider text-muted-foreground">CLINIC</div>
               </div>
             </Link>
 
@@ -201,13 +201,17 @@ const Navigation = () => {
               </NavigationMenu>
 
               <div className="flex items-center gap-3 ml-4">
-                <Button variant="outline" size="sm" asChild className="gap-2">
+                <Button variant="outline" size="sm" asChild className="gap-2 hover:border-primary hover:text-primary transition-all duration-300">
                   <a href="tel:+441925917578">
                     <Phone className="h-4 w-4" />
                     Give us a Call
                   </a>
                 </Button>
-                <Button size="sm" asChild className="gap-2 bg-primary hover:bg-[hsl(var(--primary-hover))]">
+                <Button 
+                  size="sm" 
+                  asChild 
+                  className="gap-2 bg-primary hover:bg-[hsl(var(--primary-hover))] shadow-md hover:shadow-lg transition-all duration-300"
+                >
                   <Link to="/contact">
                     <FileText className="h-4 w-4" />
                     Register Now
